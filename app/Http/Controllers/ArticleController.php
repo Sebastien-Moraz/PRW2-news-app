@@ -42,6 +42,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
+        $article->incrementVisits();
         return view('articles.show', compact('article'));
     }
 
@@ -69,5 +70,13 @@ class ArticleController extends Controller
     {
         $article->archive();
         return redirect()->route('articles.index');
+    }
+
+    /**
+     * return 5 most visited articles
+     */
+    public function home()
+    {
+        return view('home', ['articles' => Article::orderBy('visits', 'desc')->take(5)->get()]);
     }
 }
