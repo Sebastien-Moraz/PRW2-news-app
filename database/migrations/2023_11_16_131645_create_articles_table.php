@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('body');
+            $table->integer('visits')->default(0);
             $table->datetime('published_at')->nullable();
             $table->timestamps();
         });
