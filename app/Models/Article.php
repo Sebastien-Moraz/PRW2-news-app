@@ -14,6 +14,11 @@ class Article extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function bids()
+    {
+        return $this->hasMany(Bid::class);
+    }
+
     public function scopeUnarchived(Builder $query)
     {
         $query->whereNull('archived_at');

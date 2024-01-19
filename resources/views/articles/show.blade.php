@@ -10,9 +10,13 @@
         @method('DELETE')
         <input type="submit" value="Supprimer l'article">
     </form>
-
     <a href="{{ route('articles.edit', $article) }}">Modifier cet article</a>
-
+    <br>
+    <br>
+    @if ($article->bids->count() > 0)
+        <p>Dernière offre le {{ $article->bids->last()->created_at->format('d/m/Y à H:i') }}</p>
+    @endif
+    <a href="{{ route('articles.bids.create', $article) }}">Faire une offre</a>
     <h3>Commentaires</h3>
 
     @unless ($article->archived_at)
