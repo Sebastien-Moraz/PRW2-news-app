@@ -29,6 +29,11 @@ class Article extends Model
         $query->where('body', 'LIKE', "%$search%");
     }
 
+    public function incrementVisits()
+    {
+        $this->increment('visits');
+    }
+
     public function archive()
     {
         $this->timestamps = false;
